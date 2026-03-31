@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="60" viewBox="0 0 120 60">
+  <rect width="120" height="60" fill="#e7f3ff" />
+  <path d="M10 30 C35 10, 55 50, 80 30 S105 10, 110 30" fill="none" stroke="#245d8f" stroke-width="4" />
+  <text x="12" y="20" font-size="10" fill="#245d8f">river</text>
+</svg>

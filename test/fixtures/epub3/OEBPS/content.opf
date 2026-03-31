@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/" version="3.0" unique-identifier="bookid">
+  <metadata>
+    <dc:title>Semantic Sample Book</dc:title>
+    <dc:creator>Ada Example</dc:creator>
+    <dc:language>en</dc:language>
+  </metadata>
+  <manifest>
+    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav" />
+    <item id="contents" href="contents.xhtml" media-type="application/xhtml+xml" />
+    <item id="preface" href="preface.xhtml" media-type="application/xhtml+xml" />
+    <item id="chapter-1a" href="chapter-1a.xhtml" media-type="application/xhtml+xml" />
+    <item id="chapter-1b" href="chapter-1b.xhtml" media-type="application/xhtml+xml" />
+    <item id="appendix" href="appendix.xhtml" media-type="application/xhtml+xml" />
+    <item id="diagram" href="images/diagram.svg" media-type="image/svg+xml" />
+  </manifest>
+  <spine>
+    <itemref idref="contents" />
+    <itemref idref="preface" />
+    <itemref idref="chapter-1a" />
+    <itemref idref="chapter-1b" />
+    <itemref idref="appendix" />
+  </spine>
+  <guide>
+    <reference type="toc" title="Contents" href="contents.xhtml" />
+    <reference type="preface" title="Preface" href="preface.xhtml#preface" />
+    <reference type="text" title="Chapter 1" href="chapter-1a.xhtml#chapter-1" />
+    <reference type="appendix" title="Appendix A" href="appendix.xhtml#appendix-a" />
+  </guide>
+</package>

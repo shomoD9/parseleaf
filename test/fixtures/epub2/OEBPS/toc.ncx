@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta name="dtb:uid" content="bookid" />
+  </head>
+  <docTitle>
+    <text>Legacy Navigation Book</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="nav-intro" playOrder="1">
+      <navLabel><text>Introduction</text></navLabel>
+      <content src="introduction.xhtml#introduction" />
+    </navPoint>
+    <navPoint id="nav-chapter" playOrder="2">
+      <navLabel><text>Chapter One</text></navLabel>
+      <content src="chapter-one.xhtml#chapter-one" />
+    </navPoint>
+    <navPoint id="nav-notes" playOrder="3">
+      <navLabel><text>Notes</text></navLabel>
+      <content src="notes.xhtml#notes" />
+    </navPoint>
+  </navMap>
+</ncx>

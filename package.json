@@ -1,0 +1,46 @@
+{
+  "name": "parseleaf",
+  "version": "0.1.0",
+  "description": "Parseleaf CLI converts EPUB books into semantically structured markdown for downstream AI workflows.",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/shomoD9/parseleaf.git"
+  },
+  "homepage": "https://github.com/shomoD9/parseleaf#readme",
+  "bugs": {
+    "url": "https://github.com/shomoD9/parseleaf/issues"
+  },
+  "keywords": [
+    "epub",
+    "markdown",
+    "ai",
+    "llm",
+    "ingestion",
+    "knowledge"
+  ],
+  "bin": {
+    "parseleaf": "./dist/src/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/cli.ts",
+    "test": "vitest run"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "cheerio": "^1.1.2",
+    "fast-xml-parser": "^5.3.1",
+    "jszip": "^3.10.1",
+    "turndown": "^7.2.0",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}
