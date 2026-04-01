@@ -1,36 +1,131 @@
 # Parseleaf
 
-`Parseleaf` is the project name. The current shipped tool is `Parseleaf CLI`, a local command-line tool that opens an EPUB, interprets the book's semantic structure, and writes a directory of markdown files that preserve the major sections of the publication. The intended output is clean enough for human reading, but the system is primarily optimized for downstream AI and knowledge-processing workflows where one chapter or front-matter section per file is more useful than one giant text dump.
+Parseleaf turns EPUB books into clean, semantically structured Markdown for AI workflows.
 
-The larger product direction is broader than EPUB alone: Parseleaf is about taking text and making it AI-usable. Right now, that idea is embodied as an EPUB-first CLI.
+Instead of flattening a book into one giant text dump, Parseleaf keeps the publication's structure intact. Chapters stay separate. Front matter stays separate. Appendices, notes, and assets stay traceable. The result is easier to read, easier to search, and much easier to feed into embeddings, retrieval pipelines, agent tools, and other downstream systems.
+
+Right now Parseleaf ships as an EPUB-first CLI. The broader project direction is larger: take text and make it AI-usable.
+
+## Why Parseleaf
+
+- Preserves chapter and section boundaries instead of emitting one monolithic file
+- Extracts assets and keeps links stable in the generated workspace
+- Writes YAML frontmatter and a machine-readable `manifest.json`
+- Produces output that works for both humans and downstream software
+- Handles EPUB 3 navigation, EPUB 2 NCX fallbacks, and degraded books with weak structure
 
 ## Install
 
-Install from npm when you already have Node 22:
+Use npm if you already have Node 22:
 
 ```bash
 npm install -g parseleaf
 ```
 
-Install from Homebrew on macOS when you want a standalone binary:
+Use Homebrew on macOS if you want a standalone binary:
 
 ```bash
 brew install shomoD9/parseleaf/parseleaf
 ```
 
-The npm package keeps Node as the runtime. The Homebrew package installs a prebuilt Parseleaf binary and does not require Node on the target machine.
+## Quick Start
 
-The CLI contract is:
+Convert an EPUB:
 
 ```bash
 parseleaf convert path/to/book.epub
-parseleaf convert path/to/book.epub --out ./custom-output
 ```
 
-If `--out` is omitted, the tool writes into `./output/<book-slug>/`. Each output directory contains numbered markdown files, an `assets/` directory for extracted images and related resources, and a `manifest.json` file that records the generated section order and source mappings.
+Write the output to a custom directory:
+
+```bash
+parseleaf convert path/to/book.epub --out ./my-output
+```
+
+If `--out` is omitted, Parseleaf writes to:
+
+```text
+./output/<book-slug>/
+```
+
+## What You Get
+
+A successful run produces a structured workspace that looks roughly like this:
+
+```text
+output/the-book/
+  01-contents.md
+  02-preface.md
+  03-chapter-1.md
+  04-appendix-a.md
+  assets/
+  manifest.json
+```
+
+Each Markdown file contains YAML frontmatter with source metadata. `manifest.json` records the generated order, section titles, source mappings, and extracted assets.
+
+## Example
+
+```bash
+parseleaf convert ./books/the-idea.epub --out ./parsed/the-idea
+```
+
+Example result:
+
+```text
+parsed/the-idea/
+  01-contents.md
+  02-introduction.md
+  03-chapter-1-the-river.md
+  04-notes.md
+  assets/
+  manifest.json
+```
+
+## Current Scope
+
+Parseleaf currently focuses on EPUB input and Markdown output. The CLI is intentionally small:
+
+```text
+parseleaf convert <input.epub> [--out <directory>]
+```
+
+That narrow scope is deliberate. The job of the tool is not to be a general ebook reader or a visual converter. Its job is to preserve semantic structure and produce files that are useful in AI and knowledge-processing systems.
+
+## Development
+
+Clone the repository, install dependencies, and run the test suite:
+
+```bash
+npm install
+npm test
+```
+
+Build the CLI locally:
+
+```bash
+npm run build
+```
+
+Check the publishable package contents:
+
+```bash
+npm run pack:check
+```
 
 ## Releases
 
-Parseleaf releases are cut from semver Git tags in the main repository, such as `v0.1.0`. The release workflow publishes the npm package, builds macOS standalone binaries, attaches those binaries to the GitHub Release, and updates the dedicated Homebrew tap.
+Releases are cut from semver Git tags such as `v0.1.0`. The release workflow:
 
-This repository is intentionally narrated. `ARCHITECTURE.md` explains the system as a whole, and the source files explain themselves in prose so the project can be read as a coherent structure instead of a pile of implementation details.
+- validates the npm package
+- builds macOS standalone binaries
+- publishes release assets to GitHub Releases
+- updates the Homebrew tap
+
+## Project Notes
+
+This repository is intentionally narrated. [ARCHITECTURE.md](./ARCHITECTURE.md) explains the system as a coherent whole, and [DEVLOG.md](./DEVLOG.md) keeps a running record of development activity.
+
+## License
+
+[MIT](./LICENSE)
