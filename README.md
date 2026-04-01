@@ -1,10 +1,17 @@
 # Parseleaf
 
-Parseleaf turns EPUB books into clean, semantically structured Markdown for AI workflows.
+Parseleaf turns ebooks into clean, semantically structured Markdown workspace so that you can operationalise its content, themes and ideas with AI.
 
-Instead of flattening a book into one giant text dump, Parseleaf keeps the publication's structure intact. Chapters stay separate. Front matter stays separate. Appendices, notes, and assets stay traceable. The result is easier to read, easier to search, and much easier to feed into embeddings, retrieval pipelines, agent tools, and other downstream systems.
+If you give an AI an ebook as one giant blob of text, it does not really encounter the book as a book. Chapters, prefaces, appendices, notes, and internal references all get flattened together. That makes it much harder for the model to follow the structure of the argument, answer precise questions, or stay grounded in where an idea came from.
 
-Right now Parseleaf ships as an EPUB-first CLI. The broader project direction is larger: take text and make it AI-usable.
+Parseleaf preserves that structure instead of destroying it. It reads the EPUB properly, splits it into meaningful sections, keeps notes and internal links intact, extracts relevant assets, and writes everything out in a form an AI can work with directly. The output is essentially the book behaving like a markdown wiki.
+
+The result is easier to read, easier to search, and much easier to feed into embeddings, retrieval pipelines, agent tools, and other downstream systems.
+
+That makes a bunch of real use cases much better:
+building structured notes, extracting methods or concepts, turning the content into reusable skills and workflows, using the principles from the book for decision intelligence, etc.
+
+Right now Parseleaf ships as a CLI tool that creates a markdown workspace from your EPUBs. The broader project direction is to take any form of media and make it AI-usable.
 
 ## Why Parseleaf
 
@@ -102,19 +109,6 @@ Check the publishable package contents:
 ```bash
 npm run pack:check
 ```
-
-## Releases
-
-Releases are cut from semver Git tags such as `v0.1.0`. The release workflow:
-
-- validates the npm package
-- builds macOS standalone binaries
-- publishes release assets to GitHub Releases
-- updates the Homebrew tap
-
-## Project Notes
-
-[ARCHITECTURE.md](./ARCHITECTURE.md) explains how the system is put together. [DEVLOG.md](./DEVLOG.md) is the running record of changes.
 
 ## License
 
