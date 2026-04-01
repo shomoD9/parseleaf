@@ -16,13 +16,9 @@ Right now Parseleaf ships as an EPUB-first CLI. The broader project direction is
 
 ## Install
 
-Use npm if you already have Node 22:
-
 ```bash
 npm install -g parseleaf
 ```
-
-Use Homebrew on macOS if you want a standalone binary:
 
 ```bash
 brew install shomoD9/parseleaf/parseleaf
@@ -30,19 +26,15 @@ brew install shomoD9/parseleaf/parseleaf
 
 ## Quick Start
 
-Convert an EPUB:
-
 ```bash
 parseleaf convert path/to/book.epub
 ```
-
-Write the output to a custom directory:
 
 ```bash
 parseleaf convert path/to/book.epub --out ./my-output
 ```
 
-If `--out` is omitted, Parseleaf writes to:
+Without `--out`, Parseleaf writes to:
 
 ```text
 ./output/<book-slug>/
@@ -84,17 +76,15 @@ parsed/the-idea/
 
 ## Current Scope
 
-Parseleaf currently focuses on EPUB input and Markdown output. The CLI is intentionally small:
+Parseleaf currently focuses on EPUB input and Markdown output:
 
 ```text
 parseleaf convert <input.epub> [--out <directory>]
 ```
 
-That narrow scope is deliberate. The job of the tool is not to be a general ebook reader or a visual converter. Its job is to preserve semantic structure and produce files that are useful in AI and knowledge-processing systems.
+It is not trying to be an ebook reader or a visual converter. The job is to preserve structure and produce files that work well in downstream AI and knowledge workflows.
 
 ## Development
-
-Clone the repository, install dependencies, and run the test suite:
 
 ```bash
 npm install
@@ -124,7 +114,7 @@ Releases are cut from semver Git tags such as `v0.1.0`. The release workflow:
 
 ## Project Notes
 
-This repository is intentionally narrated. [ARCHITECTURE.md](./ARCHITECTURE.md) explains the system as a coherent whole, and [DEVLOG.md](./DEVLOG.md) keeps a running record of development activity.
+[ARCHITECTURE.md](./ARCHITECTURE.md) explains how the system is put together. [DEVLOG.md](./DEVLOG.md) is the running record of changes.
 
 ## License
 
