@@ -255,8 +255,18 @@ jobs:
 
       - name: Install Parseleaf through Homebrew and run the formula test
         run: |
-          brew install --formula "$RUNNER_TEMP/homebrew/parseleaf.rb"
+          TAP_NAME="local/parseleaf-verify"
+          TAP_ROOT="$(brew --repository)/Library/Taps/local/homebrew-parseleaf-verify"
+
+          # Homebrew now insists that formulae live inside a tap, so CI creates
+          # a throwaway local tap and installs Parseleaf the same way users will.
+          brew tap-new "$TAP_NAME" --no-git
+          mkdir -p "$TAP_ROOT/Formula"
+          cp "$RUNNER_TEMP/homebrew/parseleaf.rb" "$TAP_ROOT/Formula/parseleaf.rb"
+
+          HOMEBREW_NO_AUTO_UPDATE=1 brew install "$TAP_NAME/parseleaf"
           brew test parseleaf
+          brew untap "$TAP_NAME"
 
   update_homebrew_tap:
     runs-on: ubuntu-latest
