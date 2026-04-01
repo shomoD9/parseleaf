@@ -1,6 +1,6 @@
 {
   "name": "parseleaf",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Parseleaf CLI converts EPUB books into semantically structured markdown for downstream AI workflows.",
   "type": "module",
   "license": "MIT",
