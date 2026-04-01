@@ -105,7 +105,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - runner: macos-13
+          - runner: macos-15-intel
             arch: x64
           - runner: macos-14
             arch: arm64
@@ -244,7 +244,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - runner: macos-13
+          - runner: macos-15-intel
           - runner: macos-14
     steps:
       - name: Download the rendered Homebrew formula
