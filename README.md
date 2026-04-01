@@ -23,9 +23,13 @@ Right now Parseleaf ships as a CLI tool that creates a markdown workspace from y
 
 ## Install
 
+NPM:
+
 ```bash
 npm install -g parseleaf
 ```
+
+Homebrew:
 
 ```bash
 brew install shomoD9/parseleaf/parseleaf
@@ -33,10 +37,12 @@ brew install shomoD9/parseleaf/parseleaf
 
 ## Quick Start
 
+Convert an EPUB:
 ```bash
 parseleaf convert path/to/book.epub
 ```
 
+Write the output to a custom directory:
 ```bash
 parseleaf convert path/to/book.epub --out ./my-output
 ```
@@ -79,35 +85,7 @@ parsed/the-idea/
   04-notes.md
   assets/
   manifest.json
-```
 
-## Current Scope
-
-Parseleaf currently focuses on EPUB input and Markdown output:
-
-```text
-parseleaf convert <input.epub> [--out <directory>]
-```
-
-It is not trying to be an ebook reader or a visual converter. The job is to preserve structure and produce files that work well in downstream AI and knowledge workflows.
-
-## Development
-
-```bash
-npm install
-npm test
-```
-
-Build the CLI locally:
-
-```bash
-npm run build
-```
-
-Check the publishable package contents:
-
-```bash
-npm run pack:check
 ```
 
 ## License
