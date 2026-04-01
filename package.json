@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Parseleaf CLI converts EPUB books into semantically structured markdown for downstream AI workflows.",
   "type": "module",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/shomoD9/parseleaf.git"
@@ -19,13 +20,25 @@
     "ingestion",
     "knowledge"
   ],
+  "files": [
+    "dist/src/**/*",
+    "README.md",
+    "LICENSE"
+  ],
   "bin": {
     "parseleaf": "./dist/src/cli.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "build:sea": "node ./scripts/release/build-sea.mjs",
     "dev": "tsx src/cli.ts",
+    "pack:check": "npm pack --dry-run --cache /tmp/parseleaf-npm-cache",
+    "prepack": "npm run build",
     "test": "vitest run"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   },
   "engines": {
     "node": ">=22"
@@ -39,6 +52,8 @@
   },
   "devDependencies": {
     "@types/node": "^24.6.0",
+    "esbuild": "^0.27.4",
+    "postject": "^1.0.0-alpha.6",
     "tsx": "^4.20.5",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4"
