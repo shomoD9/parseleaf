@@ -88,7 +88,9 @@ jobs:
 
       - name: Smoke-test install from the generated tarball
         run: |
-          TARBALL="$(npm pack --cache /tmp/parseleaf-npm-cache)"
+          # `npm pack` writes prepack/build chatter before the tarball name, so
+          # we keep only the final line for the later install command.
+          TARBALL="$(npm pack --cache /tmp/parseleaf-npm-cache | tail -n 1)"
           PREFIX="$RUNNER_TEMP/npm-global"
 
           npm install --global --prefix "$PREFIX" "./$TARBALL"
