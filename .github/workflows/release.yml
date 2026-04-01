@@ -266,7 +266,6 @@ jobs:
 
           HOMEBREW_NO_AUTO_UPDATE=1 brew install "$TAP_NAME/parseleaf"
           brew test parseleaf
-          brew untap "$TAP_NAME"
 
   update_homebrew_tap:
     runs-on: ubuntu-latest
